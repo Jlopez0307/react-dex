@@ -33,7 +33,7 @@ const Pokedex = () => {
 
     return (
         <View style={styles.container}>
-            
+            <Text>POKEDEX</Text>
         </View>
     )
 }

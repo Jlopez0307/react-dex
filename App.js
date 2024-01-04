@@ -5,8 +5,9 @@ import React, {
 } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
 
 import DexScreen from './Screens/DexScreen';
 import TypesScreen from './Screens/TypesScreen';
@@ -18,36 +19,38 @@ import {
   ScrollView, 
   Image, 
   TextInput
-} from 'react-native';
+} from 'react-native'
 
-import Pokedex from './components/Pokedex';
+//images
+import DexIcon from './images/pokemon_pokecenter_icon-icons.com_67517.svg'
 
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if(route.name === "Dex") {
-              iconName = focused ? 'dex' : 'dex-outline';
-            }
-
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTineColor: 'tomato',
-          inactiveTineColor: 'gray',
+      <Tab.Navigator 
+        initialRouteName='Pokedex'
+        activeColor='#E44D2E'
+        inactiveColor='white'
+        barStyle={{
+          backgroundColor: '#2A3439',
         }}
       >
-        <Tab.Screen name="Dex" component={DexScreen}/>
-        <Tab.Screen name="Types" component={TypesScreen} />
-
+        <Tab.Screen 
+          name="DexScreen" 
+          component={DexScreen}
+          options={{
+            tabBarIcon: ({size, focused, color}) => {
+              return <Image 
+                style={{width: size, height: size}}
+                source={{uri: `${DexIcon}`}}
+              />
+            }
+          }}
+        />
+        <Tab.Screen name="TypesScreen" component={TypesScreen}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
