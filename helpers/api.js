@@ -16,10 +16,10 @@ class PokemonAPI {
         };
     };
 
-    static async getStartingPokemon() {
+    static async getKantoPokemon() {
         try{
             const req = await fetch(
-                `${BASE_API}/bulbasaur`
+                `${BASE_API}/?limit=151`
             );
             const json = await req.json();
             return json;
