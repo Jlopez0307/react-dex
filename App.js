@@ -5,11 +5,13 @@ import React, {
 } from 'react';
 
 import BottomNav from './components/BottomNav';
+import Routes from './routes/routes';
+
 
 
 const App = () => {
   return (
-    <BottomNav/>
+   <Routes />
   );
 }
 
